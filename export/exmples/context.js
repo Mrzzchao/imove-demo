@@ -7,6 +7,8 @@ export default class Context {
     const { payload = {} } = opts;
     this.curNode = null;
     this.context = {};
+
+    // 让payload不可修改，不可删除，不可新增
     this.payload = Object.freeze({ ...payload });
   }
 
