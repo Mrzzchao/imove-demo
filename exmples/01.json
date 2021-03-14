@@ -1,0 +1,2976 @@
+{
+  "cells": [
+    {
+      "position": {
+        "x": 50,
+        "y": 10
+      },
+      "size": {
+        "width": 80,
+        "height": 80
+      },
+      "shape": "imove-start",
+      "data": {
+        "label": "开始",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "trigger": "start",
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  console.log('start')\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "52dacb08-84e7-48f4-88b9-a52ea77bcca6",
+      "zIndex": 1
+    },
+    {
+      "position": {
+        "x": 218,
+        "y": 20
+      },
+      "size": {
+        "width": 80,
+        "height": 60
+      },
+      "attrs": {
+        "label": {
+          "text": "是否有LBS接口"
+        }
+      },
+      "shape": "imove-branch",
+      "data": {
+        "label": "是否有LBS接口",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "ports": {
+          "right": {
+            "condition": "true"
+          },
+          "bottom": {
+            "condition": "false"
+          }
+        },
+        "code": "export default async function(ctx) {\n  return checkHasLBS();\n}\n\nfunction checkHasLBS() {\n  const t = Math.random();\n  console.log(t);\n  return t < 0.8;\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "zIndex": 999999999,
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "right"
+            }
+          },
+          "bottom": {
+            "zIndex": 999999999,
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "bottom"
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "bottom",
+            "group": "bottom",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "0f43c929-6642-4724-82c7-e4db8574764d",
+      "zIndex": 2
+    },
+    {
+      "shape": "edge",
+      "id": "8b09d539-aef1-4603-9dbf-45c0f09c77b3",
+      "zIndex": 3,
+      "source": {
+        "cell": "52dacb08-84e7-48f4-88b9-a52ea77bcca6",
+        "port": "right"
+      },
+      "target": {
+        "cell": "0f43c929-6642-4724-82c7-e4db8574764d",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 379,
+        "y": 30
+      },
+      "size": {
+        "width": 120,
+        "height": 40
+      },
+      "attrs": {
+        "label": {
+          "text": "获取：LBS信息"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "获取：LBS信息",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  return getLocation();\n}\n\nfunction getLocation() {\n  return new Promise((resolve, reject) => {\n    setTimeout(function() {\n      const t = Math.random();\n      if (t > 0.8) {\n        resolve({\n          success: false,\n          code: 'ERROR_LBS'\n        })\n      } else {\n        resolve({\n          success: true,\n          location: {\n            latitude: 116.397428,\n            longitude: 39.90923\n          }\n        })\n      }\n    }, 100);\n  })\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "68505581-cfef-40e5-832f-8b88b083cb96",
+      "zIndex": 4
+    },
+    {
+      "position": {
+        "x": 379,
+        "y": 110
+      },
+      "size": {
+        "width": 110,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：无LBS"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：无LBS",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  ctx.emit('action', { type: 'ERROR_NO_LBS_API'})\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "cea1c3c5-16d2-48df-99b6-66ac22ef01a5",
+      "zIndex": 5
+    },
+    {
+      "shape": "edge",
+      "id": "f4a9ec66-77d9-4cf5-96c8-7bea5473d450",
+      "zIndex": 6,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "是"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "0f43c929-6642-4724-82c7-e4db8574764d",
+        "port": "right"
+      },
+      "target": {
+        "cell": "68505581-cfef-40e5-832f-8b88b083cb96",
+        "port": "left"
+      }
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "aa1dd7a1-176a-4ac3-be0c-74d2401d217f",
+      "zIndex": 7,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "否"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "0f43c929-6642-4724-82c7-e4db8574764d",
+        "port": "bottom"
+      },
+      "target": {
+        "cell": "cea1c3c5-16d2-48df-99b6-66ac22ef01a5",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 568,
+        "y": 20
+      },
+      "size": {
+        "width": 80,
+        "height": 60
+      },
+      "attrs": {
+        "label": {
+          "text": "LBS 成功"
+        }
+      },
+      "shape": "imove-branch",
+      "data": {
+        "label": "LBS 成功",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "ports": {
+          "right": {
+            "condition": "true"
+          },
+          "bottom": {
+            "condition": "false"
+          }
+        },
+        "code": "export default async function(ctx) {\n  const {\n    success\n  } = ctx.getPipe();\n  console.log(ctx.getPipe());\n  return success;\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "zIndex": 999999999,
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "right"
+            }
+          },
+          "bottom": {
+            "zIndex": 999999999,
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "bottom"
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "bottom",
+            "group": "bottom",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "839e0a2e-fc9e-4094-815d-69bce949c55f",
+      "zIndex": 8
+    },
+    {
+      "position": {
+        "x": 668,
+        "y": 110
+      },
+      "size": {
+        "width": 160,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：LBS 获取异常"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：LBS 获取异常",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  ctx.emit('action', { type: 'ERROR_LBS_API'})\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "4080c197-164e-409e-8f0f-e5046c86fae8",
+      "zIndex": 9
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "85835f72-9595-4eec-8f2a-7e7385ede17e",
+      "zIndex": 10,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "否"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "839e0a2e-fc9e-4094-815d-69bce949c55f",
+        "port": "bottom"
+      },
+      "target": {
+        "cell": "4080c197-164e-409e-8f0f-e5046c86fae8",
+        "port": "left"
+      }
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "f1b6dd9e-d62f-42b0-bdc6-f419291e40bf",
+      "zIndex": 11,
+      "source": {
+        "cell": "68505581-cfef-40e5-832f-8b88b083cb96",
+        "port": "right"
+      },
+      "target": {
+        "cell": "839e0a2e-fc9e-4094-815d-69bce949c55f",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 528,
+        "y": 300
+      },
+      "size": {
+        "width": 150,
+        "height": 40
+      },
+      "attrs": {
+        "label": {
+          "text": "获取：LBS 转 城市"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "获取：LBS 转 城市",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  const {\n    location\n  } = ctx.getPipe();\n  return getCity();\n}\n\nfunction getCity(location) {\n  return new Promise((resolve, reject) => {\n    setTimeout(function() {\n      const t = Math.random();\n      if (t > 0.8) {\n        resolve({\n          success: false,\n          code: 'ERROR_CITY_API'\n        })\n      } else {\n        resolve({\n          success: true,\n          city: {\n            \"cityno\": \"beijing\",\n            \"citynm\": \"北京\",\n            \"cityid\": \"101010100\",\n          }\n        })\n      }\n    }, 100);\n  })\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "d875a604-a9c0-4214-9a85-29b43d131e80",
+      "zIndex": 12
+    },
+    {
+      "position": {
+        "x": 725,
+        "y": 30
+      },
+      "size": {
+        "width": 130,
+        "height": 40
+      },
+      "attrs": {
+        "label": {
+          "text": "处理：LBS数据"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "处理：LBS数据",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  const {\n    location\n  } = ctx.getPipe();\n  \n  return {\n    location\n  }\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "863329a5-918e-442a-a49e-2bf7d9c3d117",
+      "zIndex": 15
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "97f20475-8fc2-4bc5-b0d8-406772b9c171",
+      "zIndex": 16,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "是"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "839e0a2e-fc9e-4094-815d-69bce949c55f",
+        "port": "right"
+      },
+      "target": {
+        "cell": "863329a5-918e-442a-a49e-2bf7d9c3d117",
+        "port": "left"
+      }
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "54ab6298-b2fb-49c9-9c91-4fdcdcfa6f5f",
+      "zIndex": 17,
+      "source": {
+        "cell": "863329a5-918e-442a-a49e-2bf7d9c3d117",
+        "port": "right"
+      },
+      "target": {
+        "cell": "d875a604-a9c0-4214-9a85-29b43d131e80",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 736,
+        "y": 290
+      },
+      "size": {
+        "width": 80,
+        "height": 60
+      },
+      "attrs": {
+        "label": {
+          "text": "获取成功"
+        }
+      },
+      "shape": "imove-branch",
+      "data": {
+        "label": "获取成功",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "ports": {
+          "right": {
+            "condition": "true"
+          },
+          "bottom": {
+            "condition": "false"
+          }
+        },
+        "code": "export default async function(ctx) {\n  const {\n    success\n  } = ctx.getPipe();\n  return success;\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "zIndex": 999999999,
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "right"
+            }
+          },
+          "bottom": {
+            "zIndex": 999999999,
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "bottom"
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "bottom",
+            "group": "bottom",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "5c318720-551b-482b-b150-adbbd8c92b2c",
+      "zIndex": 18
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "5c958e26-3c2e-4798-a05a-a6cea1ee5455",
+      "zIndex": 19,
+      "source": {
+        "cell": "d875a604-a9c0-4214-9a85-29b43d131e80",
+        "port": "right"
+      },
+      "target": {
+        "cell": "5c318720-551b-482b-b150-adbbd8c92b2c",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 908,
+        "y": 300
+      },
+      "size": {
+        "width": 120,
+        "height": 40
+      },
+      "attrs": {
+        "label": {
+          "text": "处理：城市数据"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "处理：城市数据",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  console.log(ctx.getPipe());\n  const {\n    city\n  } = ctx.getPipe();\n  return {\n    city\n  }\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "d5a7938b-1126-433e-9357-ee0d3570229b",
+      "zIndex": 20
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "2cd48145-7f6f-4588-924f-4b50f92f1c8c",
+      "zIndex": 21,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "是"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "5c318720-551b-482b-b150-adbbd8c92b2c",
+        "port": "right"
+      },
+      "target": {
+        "cell": "d5a7938b-1126-433e-9357-ee0d3570229b",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 800,
+        "y": 390
+      },
+      "size": {
+        "width": 160,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：城市获取异常"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：城市获取异常",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  ctx.emit('action', { type: 'ERROR_LOCATION_API'})\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "cf7238f2-13bb-4f43-aa66-3cd688f24184",
+      "zIndex": 22
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "4f18acf6-6b12-47c6-9cba-e6d86da3afcd",
+      "zIndex": 23,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "否"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "5c318720-551b-482b-b150-adbbd8c92b2c",
+        "port": "bottom"
+      },
+      "target": {
+        "cell": "cf7238f2-13bb-4f43-aa66-3cd688f24184",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 533,
+        "y": 512
+      },
+      "size": {
+        "width": 150,
+        "height": 40
+      },
+      "attrs": {
+        "label": {
+          "text": "获取：查 天气数据"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "获取：查 天气数据",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  \n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "239a45d0-08ad-4866-a9e1-7fdf3c650a67",
+      "zIndex": 24
+    },
+    {
+      "position": {
+        "x": 736,
+        "y": 502
+      },
+      "size": {
+        "width": 80,
+        "height": 60
+      },
+      "attrs": {
+        "label": {
+          "text": "获取成功"
+        }
+      },
+      "shape": "imove-branch",
+      "data": {
+        "label": "获取成功",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "ports": {
+          "right": {
+            "condition": "true"
+          },
+          "bottom": {
+            "condition": "false"
+          }
+        },
+        "code": "export default async function(ctx) {\n  return true;\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "zIndex": 999999999,
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "right"
+            }
+          },
+          "bottom": {
+            "zIndex": 999999999,
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "bottom"
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "bottom",
+            "group": "bottom",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "e0368f59-2a37-4161-bad1-3c0c9b1e1001",
+      "zIndex": 25
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "b6d9d5f7-f24a-4076-884b-1dd2f8a81289",
+      "zIndex": 26,
+      "source": {
+        "cell": "239a45d0-08ad-4866-a9e1-7fdf3c650a67",
+        "port": "right"
+      },
+      "target": {
+        "cell": "e0368f59-2a37-4161-bad1-3c0c9b1e1001",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 816,
+        "y": 620
+      },
+      "size": {
+        "width": 160,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：天气获取异常"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：天气获取异常",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  \n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "cae91131-36bd-4c60-85b0-120464760cb6",
+      "zIndex": 27
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "b203b865-eeac-4236-9c6b-e787cbaa5c00",
+      "zIndex": 28,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "否"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "e0368f59-2a37-4161-bad1-3c0c9b1e1001",
+        "port": "bottom"
+      },
+      "target": {
+        "cell": "cae91131-36bd-4c60-85b0-120464760cb6",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 908,
+        "y": 512
+      },
+      "size": {
+        "width": 120,
+        "height": 40
+      },
+      "attrs": {
+        "label": {
+          "text": "处理：天气数据"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "处理：天气数据",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  \n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "355ba90c-3e21-41cd-b041-d0d9981dff70",
+      "zIndex": 29
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "dd0a8393-da25-4bce-9f06-4abe1b4731c1",
+      "zIndex": 30,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "是"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "e0368f59-2a37-4161-bad1-3c0c9b1e1001",
+        "port": "right"
+      },
+      "target": {
+        "cell": "355ba90c-3e21-41cd-b041-d0d9981dff70",
+        "port": "left"
+      }
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "439f966d-8c57-46b5-a434-b42b2ad77a56",
+      "zIndex": 31,
+      "source": {
+        "cell": "d5a7938b-1126-433e-9357-ee0d3570229b",
+        "port": "right"
+      },
+      "target": {
+        "cell": "239a45d0-08ad-4866-a9e1-7fdf3c650a67",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 1098,
+        "y": 512
+      },
+      "size": {
+        "width": 160,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：天气获取成功"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：天气获取成功",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  \n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "d1033654-fee5-4151-8932-7a907410b363",
+      "zIndex": 32
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "54a11734-95e7-4980-a433-c89274c3de46",
+      "zIndex": 33,
+      "source": {
+        "cell": "355ba90c-3e21-41cd-b041-d0d9981dff70",
+        "port": "right"
+      },
+      "target": {
+        "cell": "d1033654-fee5-4151-8932-7a907410b363",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 50,
+        "y": 280
+      },
+      "size": {
+        "width": 80,
+        "height": 80
+      },
+      "attrs": {
+        "label": {
+          "text": "入参：经纬度"
+        }
+      },
+      "shape": "imove-start",
+      "data": {
+        "label": "入参：经纬度",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "trigger": "onLBS",
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  const {\n    location\n  } = ctx.getPayload();\n  return {\n    location\n  }\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "3b58681b-6779-41c5-9b67-8387092c2b0b",
+      "zIndex": 34
+    },
+    {
+      "position": {
+        "x": 218,
+        "y": 290
+      },
+      "size": {
+        "width": 80,
+        "height": 60
+      },
+      "attrs": {
+        "label": {
+          "text": "是否有LBS数据"
+        }
+      },
+      "shape": "imove-branch",
+      "data": {
+        "label": "是否有LBS数据",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "ports": {
+          "right": {
+            "condition": "true"
+          },
+          "bottom": {
+            "condition": "false"
+          }
+        },
+        "code": "export default async function(ctx) {\n  const {\n    location\n  } = ctx.getPipe();\n  return !!location;\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "zIndex": 999999999,
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "right"
+            }
+          },
+          "bottom": {
+            "zIndex": 999999999,
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "bottom"
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "bottom",
+            "group": "bottom",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "2b395e39-56ad-4d5c-9831-bfdc5a0cbe0a",
+      "zIndex": 35
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "0f76510d-f520-432c-a390-d315cfea8313",
+      "zIndex": 36,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "是"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "2b395e39-56ad-4d5c-9831-bfdc5a0cbe0a",
+        "port": "right"
+      },
+      "target": {
+        "cell": "d875a604-a9c0-4214-9a85-29b43d131e80",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 50,
+        "y": 492
+      },
+      "size": {
+        "width": 80,
+        "height": 80
+      },
+      "attrs": {
+        "label": {
+          "text": "入参：城市"
+        }
+      },
+      "shape": "imove-start",
+      "data": {
+        "label": "入参：城市",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "trigger": "onCity",
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  const {\n    city\n  } = ctx.getPayload();\n  return {\n    city\n  }\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "7b3d10cf-045a-43c3-9328-78a5ec88bff1",
+      "zIndex": 37
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "da29024c-7a4b-48ca-b692-6d4d8d377c74",
+      "zIndex": 38,
+      "source": {
+        "cell": "3b58681b-6779-41c5-9b67-8387092c2b0b",
+        "port": "right"
+      },
+      "target": {
+        "cell": "2b395e39-56ad-4d5c-9831-bfdc5a0cbe0a",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 218,
+        "y": 502
+      },
+      "size": {
+        "width": 80,
+        "height": 60
+      },
+      "attrs": {
+        "label": {
+          "text": "是否有城市ID"
+        }
+      },
+      "shape": "imove-branch",
+      "data": {
+        "label": "是否有城市ID",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "ports": {
+          "right": {
+            "condition": "true"
+          },
+          "bottom": {
+            "condition": "false"
+          }
+        },
+        "code": "export default async function(ctx) {\n  const {\n    city\n  } = ctx.getPipe();\n  \n  const {\n    cityId\n  } = city || {};\n\n  return !!cityId;\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "zIndex": 999999999,
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "right"
+            }
+          },
+          "bottom": {
+            "zIndex": 999999999,
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            },
+            "label": {
+              "position": "bottom"
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "bottom",
+            "group": "bottom",
+            "attrs": {
+              "text": {
+                "text": ""
+              }
+            }
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "dab05fb8-9e99-4daa-97d9-c04570b3b2c9",
+      "zIndex": 39
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "aa21e8c8-c1fe-46e4-ba25-6a5b87c50690",
+      "zIndex": 40,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "是"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "dab05fb8-9e99-4daa-97d9-c04570b3b2c9",
+        "port": "right"
+      },
+      "target": {
+        "cell": "239a45d0-08ad-4866-a9e1-7fdf3c650a67",
+        "port": "left"
+      }
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "357dbd43-b3fb-43aa-b5a0-2ebda871a78b",
+      "zIndex": 41,
+      "source": {
+        "cell": "7b3d10cf-045a-43c3-9328-78a5ec88bff1",
+        "port": "right"
+      },
+      "target": {
+        "cell": "dab05fb8-9e99-4daa-97d9-c04570b3b2c9",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 298,
+        "y": 390
+      },
+      "size": {
+        "width": 160,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：LBS 参数异常"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：LBS 参数异常",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  ctx.emit('action', { type: 'ERROR_NO_LOCATION_PARAMS'})\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "c875e015-109f-4a53-99c3-f6ec7b002e16",
+      "zIndex": 42
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "0c8f2b3b-0590-4985-a535-914f5af2092d",
+      "zIndex": 43,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "否"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "2b395e39-56ad-4d5c-9831-bfdc5a0cbe0a",
+        "port": "bottom"
+      },
+      "target": {
+        "cell": "c875e015-109f-4a53-99c3-f6ec7b002e16",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 298,
+        "y": 604
+      },
+      "size": {
+        "width": 160,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：城市ID 参数异常"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：城市ID 参数异常",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  \n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "44ab255f-86f4-45e8-b734-134d5562da23",
+      "zIndex": 44
+    },
+    {
+      "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
+      "id": "d6733125-e342-4f29-b97e-1c078dca768e",
+      "zIndex": 45,
+      "labels": [
+        {
+          "attrs": {
+            "label": {
+              "text": "否"
+            }
+          }
+        }
+      ],
+      "source": {
+        "cell": "dab05fb8-9e99-4daa-97d9-c04570b3b2c9",
+        "port": "bottom"
+      },
+      "target": {
+        "cell": "44ab255f-86f4-45e8-b734-134d5562da23",
+        "port": "left"
+      }
+    },
+    {
+      "position": {
+        "x": 1132,
+        "y": 300
+      },
+      "size": {
+        "width": 140,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：城市数据"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：城市数据",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  const {\n    city\n  } = ctx.getPipe();\n  ctx.emit('action', { type: 'DATA_CITY', city });\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "beb4a470-c24a-4dd4-95ea-920c0b553d29",
+      "zIndex": 46
+    },
+    {
+      "shape": "edge",
+      "id": "0898ecdd-990f-4fe9-b3e3-866805f7d71c",
+      "source": {
+        "cell": "d5a7938b-1126-433e-9357-ee0d3570229b",
+        "port": "right"
+      },
+      "target": {
+        "cell": "beb4a470-c24a-4dd4-95ea-920c0b553d29",
+        "port": "left"
+      },
+      "zIndex": 47
+    },
+    {
+      "position": {
+        "x": 960,
+        "y": 30
+      },
+      "size": {
+        "width": 140,
+        "height": 40
+      },
+      "attrs": {
+        "body": {
+          "fill": "#b8e986",
+          "stroke": "#7ed321"
+        },
+        "label": {
+          "text": "触发：LBS数据"
+        }
+      },
+      "shape": "imove-behavior",
+      "data": {
+        "label": "触发：LBS数据",
+        "configSchema": "{\n  \n}",
+        "configData": {},
+        "dependencies": "{\n  \n}",
+        "code": "export default async function(ctx) {\n  const {\n    location\n  } = ctx.getPipe();\n  ctx.emit('action', { type: 'DATA_LOCATION', location });\n}"
+      },
+      "ports": {
+        "groups": {
+          "top": {
+            "position": "top",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "right": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "bottom": {
+            "position": "bottom",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          },
+          "left": {
+            "position": "left",
+            "attrs": {
+              "circle": {
+                "r": 3,
+                "magnet": true,
+                "stroke": "#666",
+                "strokeWidth": 1,
+                "fill": "#fff"
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "top",
+            "group": "top"
+          },
+          {
+            "id": "right",
+            "group": "right"
+          },
+          {
+            "id": "bottom",
+            "group": "bottom"
+          },
+          {
+            "id": "left",
+            "group": "left"
+          }
+        ]
+      },
+      "id": "a5ad1a05-1bf2-4280-822c-9ab18f877f10",
+      "zIndex": 48
+    },
+    {
+      "shape": "edge",
+      "id": "10368b63-43aa-4b2d-bf49-65d22f2648d0",
+      "source": {
+        "cell": "863329a5-918e-442a-a49e-2bf7d9c3d117",
+        "port": "right"
+      },
+      "target": {
+        "cell": "a5ad1a05-1bf2-4280-822c-9ab18f877f10",
+        "port": "left"
+      },
+      "zIndex": 49
+    }
+  ]
+}
