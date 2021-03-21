@@ -90,7 +90,7 @@ export default class Logic extends EventEmitter {
         const { ports } = curNode.data;
         for (const key in ports) {
           const { condition } = ports[key];
-          const ret = new Function('ctx', 'return ' + condition)(ctx);
+          const ret = new Function('ctx', `return ${condition}`)(ctx);
           if (ret === Boolean(curRet)) {
             matchedPort = key;
             break;
@@ -160,7 +160,7 @@ export default class Logic extends EventEmitter {
     if (curNode.shape !== SHAPES.BRANCH) {
       lastRet = curRet;
     }
-    
+
     // 获取当前节点的右节点列表
     const nextNodes = this._getNextNodes(ctx, curNode, curRet);
     if (nextNodes.length > 0) {

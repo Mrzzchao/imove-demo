@@ -14,6 +14,13 @@ function getLocation() {
           code: 'ERROR_LBS'
         })
       } else {
+        console.log('test====', {
+          success: true,
+          location: {
+            latitude: 116.397428,
+            longitude: 39.90923
+          }
+        })
         resolve({
           success: true,
           location: {

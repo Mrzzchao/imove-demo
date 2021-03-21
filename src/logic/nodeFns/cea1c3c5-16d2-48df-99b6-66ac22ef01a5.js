@@ -2,4 +2,5 @@
 
 export default async function(ctx) {
   ctx.emit('action', { type: 'ERROR_NO_LBS_API'})
+  console.log('est')
 }

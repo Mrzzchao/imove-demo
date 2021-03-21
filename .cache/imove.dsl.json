@@ -214,6 +214,11 @@
     },
     {
       "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
       "id": "8b09d539-aef1-4603-9dbf-45c0f09c77b3",
       "zIndex": 3,
       "source": {
@@ -245,7 +250,7 @@
         "configSchema": "{\n  \n}",
         "configData": {},
         "dependencies": "{\n  \n}",
-        "code": "export default async function(ctx) {\n  return getLocation();\n}\n\nfunction getLocation() {\n  return new Promise((resolve, reject) => {\n    setTimeout(function() {\n      const t = Math.random();\n      if (t > 0.8) {\n        resolve({\n          success: false,\n          code: 'ERROR_LBS'\n        })\n      } else {\n        resolve({\n          success: true,\n          location: {\n            latitude: 116.397428,\n            longitude: 39.90923\n          }\n        })\n      }\n    }, 100);\n  })\n}"
+        "code": "export default async function(ctx) {\n  return getLocation();\n}\n\nfunction getLocation() {\n  return new Promise((resolve, reject) => {\n    setTimeout(function() {\n      const t = Math.random();\n      if (t > 0.8) {\n        resolve({\n          success: false,\n          code: 'ERROR_LBS'\n        })\n      } else {\n        console.log('test====', {\n          success: true,\n          location: {\n            latitude: 116.397428,\n            longitude: 39.90923\n          }\n        })\n        resolve({\n          success: true,\n          location: {\n            latitude: 116.397428,\n            longitude: 39.90923\n          }\n        })\n      }\n    }, 100);\n  })\n}"
       },
       "ports": {
         "groups": {
@@ -322,8 +327,8 @@
     },
     {
       "position": {
-        "x": 379,
-        "y": 110
+        "x": 384,
+        "y": 130
       },
       "size": {
         "width": 110,
@@ -344,7 +349,7 @@
         "configSchema": "{\n  \n}",
         "configData": {},
         "dependencies": "{\n  \n}",
-        "code": "export default async function(ctx) {\n  ctx.emit('action', { type: 'ERROR_NO_LBS_API'})\n}"
+        "code": "export default async function(ctx) {\n  ctx.emit('action', { type: 'ERROR_NO_LBS_API'})\n  console.log('est')\n}"
       },
       "ports": {
         "groups": {
@@ -421,6 +426,11 @@
     },
     {
       "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
       "id": "f4a9ec66-77d9-4cf5-96c8-7bea5473d450",
       "zIndex": 6,
       "labels": [
@@ -2961,6 +2971,11 @@
     },
     {
       "shape": "edge",
+      "attrs": {
+        "line": {
+          "strokeWidth": "2px"
+        }
+      },
       "id": "10368b63-43aa-4b2d-bf49-65d22f2648d0",
       "zIndex": 49,
       "source": {
